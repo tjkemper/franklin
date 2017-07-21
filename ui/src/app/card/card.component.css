@@ -1,0 +1,42 @@
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 20px;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+.mat-header-cell .mat-sort-header-sorted {
+  color: black;
+}
+
+.virtue-counter {
+    cursor: pointer;
+}
+
+.virtue-counter:hover {
+    background-color: lightyellow;
+}
+
+.important-text {
+    font-weight: bold;
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+.lg-text {
+    font-weight:bolder;
+    font-size: 2em;
+    font-style: italic;
+}

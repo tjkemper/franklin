@@ -1,0 +1,24 @@
+<h3>Card</h3>
+
+<div class="example-container mat-elevation-z8">
+  <md-table #table [dataSource]="dataSource" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Virtue Column -->
+    <ng-container cdkColumnDef="virtue">
+      <md-header-cell *cdkHeaderCellDef md-sort-header class="important-text lg-text"> Virtue </md-header-cell>
+      <md-cell *cdkCellDef="let row" class="important-text"> {{row.virtue}} </md-cell>
+    </ng-container>
+
+    <!-- Days of the Week Columns -->
+    <ng-container cdkColumnDef="{{day}}" *ngFor="let day of daysOfWeek">
+      <md-header-cell *cdkHeaderCellDef md-sort-header class="important-text"> {{ day }} </md-header-cell>
+      <md-cell *cdkCellDef="let row" (click)="increment(row, day)" (mousedown)="mousedown($event)" class="virtue-counter"> {{ row[day] | dot }} </md-cell>
+    </ng-container>
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
