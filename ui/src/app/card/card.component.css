@@ -40,3 +40,13 @@
     font-size: 2em;
     font-style: italic;
 }
+
+.today {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 40%;
+}
+
+md-header-cell, md-cell {
+  text-align: center;
+}

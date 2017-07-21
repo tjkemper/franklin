@@ -18,6 +18,7 @@ export class CardComponent implements OnInit {
   exampleDatabase = new ExampleDatabase();
   dataSource: ExampleDataSource | null;
   daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  today = new Date();
 
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase);
