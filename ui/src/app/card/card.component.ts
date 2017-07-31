@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {DataSource} from '@angular/cdk';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { DataSource } from '@angular/cdk';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
@@ -20,8 +20,13 @@ export class CardComponent implements OnInit {
   daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   today = new Date();
 
+  constructor(
+    private changeDetector: ChangeDetectorRef
+  ){}
+
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    this.changeDetector.detectChanges();
   }
 
   increment(row, day) {

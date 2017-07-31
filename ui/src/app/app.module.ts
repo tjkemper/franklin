@@ -39,16 +39,20 @@ import {
 
 import {HttpModule} from '@angular/http';
 import {CdkTableModule} from '@angular/cdk';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { DotPipe } from './dot.pipe';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
+    HomeComponent,
     DotPipe
+
   ],
   imports: [
     BrowserModule,
@@ -85,8 +89,9 @@ import { DotPipe } from './dot.pipe';
     MdTabsModule,
     MdToolbarModule,
     MdTooltipModule,
-    MdNativeDateModule
+    MdNativeDateModule,
 
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
