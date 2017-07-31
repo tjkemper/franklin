@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DotPipe implements PipeTransform {
 
   transform(value: number, args?: any): any {
-    if(value === 0) {
+    if(value <= 0) {
       return "0";
     }
     let dots: string = "";
