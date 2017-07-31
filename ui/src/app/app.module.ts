@@ -45,13 +45,15 @@ import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { DotPipe } from './dot.pipe';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     HomeComponent,
-    DotPipe
+    DotPipe,
+    AboutComponent
 
   ],
   imports: [
