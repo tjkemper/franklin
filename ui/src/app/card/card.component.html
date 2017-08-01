@@ -12,7 +12,7 @@
 
     <!-- Days of the Week Columns -->
     <ng-container cdkColumnDef="{{day}}" *ngFor="let day of daysOfWeek; let i = index;">
-      <md-header-cell *cdkHeaderCellDef md-sort-header class="important-text" [class.today]="today.getDay() === i"> {{ day }} </md-header-cell>
+      <md-header-cell *cdkHeaderCellDef md-sort-header class="important-text" [class.today]="card.current && today.getDay() === i"> {{ day }} </md-header-cell>
       <md-cell *cdkCellDef="let row" (click)="increment(row, day)" (mousedown)="mousedown($event)" class="virtue-counter"> {{ row[day] | dot }} </md-cell>
     </ng-container>
 
