@@ -2,8 +2,11 @@
 .example-container {
   display: flex;
   flex-direction: column;
-  max-height: 686px;
-  min-width: 300px;
+  /* max-height: 686px; */
+  /* min-width: 815px;
+  max-width: 900px; */
+  height: 686px;
+  width: 900px;
 }
 
 .example-header {

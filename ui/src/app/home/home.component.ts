@@ -18,7 +18,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.deckService.getNextPage()
-                    .then(cardData => this.cards.push(...cardData.data));
+                    .then(cardData => {
+                      this.cards.push(...cardData.data)
+                      this.cards[0].current = true;
+                    });
   }
 
 }

@@ -14,6 +14,7 @@ export class Card {
     deckId: string;
     startDate: string; //unix time stamp
     virtueData: VirtueData[];
+    current: boolean;
 }
 
 export class VirtueData {

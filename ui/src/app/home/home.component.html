@@ -2,6 +2,8 @@
   home works!
 </p>
 
-<div *ngFor="let card of cards">
-  <app-card [card]="card"></app-card>
+<div class="scroll"> 
+  <div *ngFor="let card of cards" class="card-detail" [class.current]="card.current">
+    <app-card [card]="card"></app-card>
+  </div>
 </div>
