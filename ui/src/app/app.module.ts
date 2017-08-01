@@ -47,6 +47,8 @@ import { DotPipe } from './dot.pipe';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
+import { DeckService } from './deck.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +97,9 @@ import { AboutComponent } from './about/about.component';
 
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DeckService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

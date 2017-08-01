@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DeckService } from '../deck.service';
+import { CardData, Card } from '../model';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  cards: Card[] = [];
+
+  constructor(
+    private deckService: DeckService
+  ) { }
 
   ngOnInit() {
+    this.deckService.getNextPage()
+                    .then(cardData => this.cards.push(...cardData.data));
   }
 
 }

@@ -1,12 +1,13 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, Input } from '@angular/core';
 import { DataSource } from '@angular/cdk';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
-import { VirtueData } from '../virtue-data';
+import { VirtueData, Card } from '../model';
 
 @Component({
   selector: 'app-card',
@@ -14,18 +15,19 @@ import { VirtueData } from '../virtue-data';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-  displayedColumns = ['virtue', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  exampleDatabase = new ExampleDatabase();
-  dataSource: ExampleDataSource | null;
   daysOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  displayedColumns = ['virtue', ...this.daysOfWeek];
+  dataSource: ExampleDataSource | null;
   today = new Date();
+
+  @Input() card: Card;
 
   constructor(
     private changeDetector: ChangeDetectorRef
   ){}
 
   ngOnInit() {
-    this.dataSource = new ExampleDataSource(this.exampleDatabase);
+    this.dataSource = new ExampleDataSource(this.card);
     this.changeDetector.detectChanges();
   }
 
@@ -37,13 +39,7 @@ export class CardComponent implements OnInit {
   mousedown(event) {
     event.preventDefault(); //prevent text highlighting
   }
-}
 
-
-/** An example database that the data source uses to retrieve data for the table. */
-export class ExampleDatabase {
-  /** Stream that emits whenever the data has been modified. */
-  dataChange: BehaviorSubject<VirtueData[]> = new BehaviorSubject<VirtueData[]>([]);
 }
 
 /**
@@ -54,34 +50,14 @@ export class ExampleDatabase {
  * should be rendered.
  */
 export class ExampleDataSource extends DataSource<any> {
-  constructor(private _exampleDatabase: ExampleDatabase) {
+
+  constructor(private card: Card) {
     super();
   }
-
+  
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<VirtueData[]> {
-    const displayDataChanges = [
-      this._exampleDatabase.dataChange,
-    ];
-
-    return Observable.merge(...displayDataChanges).map(() => {
-      return [
-        {virtue: "temperance",  "sunday": 1, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "silence",     "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "order",       "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "resolution",  "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "frugality",   "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "industry",    "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "sincerity",   "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "justice",     "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "moderation",  "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "cleanliness", "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "chastity",    "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "tranquility", "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        {virtue: "humility",    "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
-        
-      ];
-    });
+    return Observable.of(this.card.virtueData);
   }
 
   disconnect() {}
