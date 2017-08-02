@@ -31,9 +31,15 @@ export class CardComponent implements OnInit {
     this.changeDetector.detectChanges();
   }
 
-  increment(row, day) {
+  onClick(row, day, event) {
     console.log(row.virtue, day);
-    row[day]++;
+    if(event.shiftKey) {
+      if(row[day] > 0) {
+        row[day]--;
+      }
+    } else {
+      row[day]++;
+    }
   }
 
   mousedown(event) {
