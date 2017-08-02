@@ -14,13 +14,24 @@ export class DeckService {
     private http: Http
   ) { }
 
+//GET /decks expects id returns Deck
+  getDeck(id: string): Promise<Deck> {
+    return Promise.resolve({ id: id, created: "1501542010" });
+  }
+
   //POST /decks returns Deck
   createDeck(): Promise<Deck> {
     return Promise.resolve({ id: "abc", created: "1501542013" });
   }
 
+  getFirstPage(deck: Deck): Promise<CardData> {
+    this.next = null;
+    return this.getNextPage(deck);
+  }
+
   //GET /decks/{deckId}?page={pageNum}&size={pageSize} returns CardData
-  getNextPage(): Promise<CardData> {
+  getNextPage(deck: Deck): Promise<CardData> {
+    // let url = `decks/${deck.id}`;
     let url = "assets/json/page1.json";
     if(this.next) {
       url = this.next;

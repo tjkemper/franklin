@@ -48,6 +48,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
 import { DeckService } from './deck.service';
+import { DeckStoreService } from './deck-store.service';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { DeckService } from './deck.service';
     AppRoutingModule
   ],
   providers: [
-    DeckService
+    DeckService,
+    DeckStoreService
   ],
   bootstrap: [AppComponent]
 })
