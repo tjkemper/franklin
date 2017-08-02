@@ -26,22 +26,29 @@
 }
 
 .virtue-counter {
-    cursor: pointer;
+  cursor: pointer;
+  height: 100%; 
+  max-width: 106px;
+  overflow:hidden;
+  white-space: normal;
+  display: flex;
+  justify-content: center; 
+  flex-direction: column;
 }
 
 .virtue-counter:hover {
-    background-color: lightyellow;
+  background-color: lightyellow;
 }
 
 .important-text {
-    font-weight: bold;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: bold;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .lg-text {
-    font-weight:bolder;
-    font-size: 2em;
-    font-style: italic;
+  font-weight:bolder;
+  font-size: 2em;
+  font-style: italic;
 }
 
 .today {
