@@ -8,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class DeckService {
 
-  next: string;
+  current: CardData;
 
   constructor(
     private http: Http
@@ -25,23 +25,29 @@ export class DeckService {
   }
 
   getFirstPage(deck: Deck): Promise<CardData> {
-    this.next = null;
+    this.current = null;
     return this.getNextPage(deck);
   }
 
   //GET /decks/{deckId}?page={pageNum}&size={pageSize} returns CardData
   getNextPage(deck: Deck): Promise<CardData> {
+    
+    //Reached end of cards
+    if(this.current && !this.current.next) {
+      return Promise.reject('No more cards.');
+    }
+
     // let url = `decks/${deck.id}`;
     let url = "assets/json/page1.json";
-    if(this.next) {
-      url = this.next;
+    if(this.current) {
+      url = this.current.next;
     }
     
     return this.http.get(url)
                     .toPromise()
                     .then(response => {
                       let json = response.json() as CardData;
-                      this.next = json.next;
+                      this.current = json;
                       return json;
                     });
   }
@@ -50,7 +56,5 @@ export class DeckService {
   updateCard(card: Card): Promise<Card> {
     return Promise.resolve(card);
   }
-
-
 
 }

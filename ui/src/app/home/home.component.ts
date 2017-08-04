@@ -12,6 +12,7 @@ import { CardData, Card } from '../model';
 export class HomeComponent implements OnInit {
 
   cards: Card[] = [];
+  more: boolean = true;
 
   constructor(
     private deckService: DeckService,
@@ -37,6 +38,10 @@ export class HomeComponent implements OnInit {
                     .then(cardData => {
                       console.log('Got next page.');
                       this.cards.push(...cardData.data);
+                    })
+                    .catch((ex) => {
+                      console.error('Error fetching next page', ex);
+                      this.more = false;
                     });
   }
 

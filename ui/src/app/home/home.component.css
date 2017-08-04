@@ -1,19 +1,40 @@
 .scroll {
-    overflow-x: scroll;
-    white-space: nowrap; 
-    /* overflow-y: hidden; */
-     /* height: 1000px;  */
+  overflow-x: scroll;
+  white-space: nowrap; 
+  /* overflow-y: hidden; */
+  /* height: 1000px;    */
 }
 
 .scroll > .card-detail {
-    display: inline-block;  
-    padding: 2em;
-    margin: 1em;
-    -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
-    box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  display: inline-block;  
+  padding: 2em;
+  margin: 1em;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
 .current {
-    background-color: tan;
+  background-color: tan;
+}
+
+.load {
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: lightblue;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 6px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+  margin: 1em;
+}
+
+.more {
+  cursor: pointer;
+}
+
+.load.nomore {
+  background-color: lightyellow;
 }

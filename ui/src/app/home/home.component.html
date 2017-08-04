@@ -2,8 +2,12 @@
   home works!
 </p>
 
+
+
 <div class="scroll"> 
   <div *ngFor="let card of cards" class="card-detail" [class.current]="card.current">
     <app-card [card]="card"></app-card>
   </div>
+  <div *ngIf="more" (click)="getNextPage()" class="load more important-text">Load more...</div>
+  <div *ngIf="!more" class="load nomore important-text">No more</div>
 </div>
