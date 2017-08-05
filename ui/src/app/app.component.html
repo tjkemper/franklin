@@ -1,10 +1,18 @@
-<div style="text-align:center">
-  <h1>
-    Franklin's Thirteen Virtues
-  </h1>
-</div>
-
-<a routerLink="">Home</a>
-<a routerLink="about">About</a>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse mb-4">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" routerLink="">Thirteen Virtues</a>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }" queryParamsHandling="merge" class="nav-link"><md-icon>home</md-icon> Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="about" [routerLinkActive]="['active']" class="nav-link"><md-icon>info</md-icon> About</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>
