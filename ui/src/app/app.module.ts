@@ -49,6 +49,7 @@ import { AboutComponent } from './about/about.component';
 
 import { DeckService } from './deck.service';
 import { DeckStoreService } from './deck-store.service';
+import { SpecialDatePipe } from './special-date.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DeckStoreService } from './deck-store.service';
     CardComponent,
     HomeComponent,
     DotPipe,
-    AboutComponent
+    AboutComponent,
+    SpecialDatePipe
 
   ],
   imports: [

@@ -5,7 +5,7 @@
         {
             "id": 1,
             "deckId": "abc",
-            "startDate": "1501372800",
+            "startDate": "1501372800000",
             "virtueData": [
                 {"virtue": "temperance",  "sunday": 1, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
                 {"virtue": "silence",     "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
@@ -25,7 +25,7 @@
         {
             "id": 2,
             "deckId": "abc",
-            "startDate": "1500768000",
+            "startDate": "1500768000000",
             "virtueData": [
                 {"virtue": "temperance",  "sunday": 2, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
                 {"virtue": "silence",     "sunday": 0, "monday": 0, "tuesday": 0, "wednesday": 0, "thursday": 0, "friday": 0, "saturday": 0},
