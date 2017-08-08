@@ -40,8 +40,10 @@ export class HomeComponent implements OnInit {
                       this.cards.push(...cardData.data);
                     })
                     .catch((ex) => {
-                      console.error('Error fetching next page', ex);
-                      this.more = false;
+                      console.error('Error fetching next page.', ex);
+                      if(ex === 'No more cards.') {
+                        this.more = false;
+                      }
                     });
   }
 

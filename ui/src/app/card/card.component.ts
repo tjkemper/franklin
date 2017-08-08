@@ -28,7 +28,7 @@ export class CardComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.card);
-    this.changeDetector.detectChanges();
+    this.changeDetector.detectChanges(); // Fixes Cdk Table not loading data while using Routing
   }
 
   onClick(row, day, event) {

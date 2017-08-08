@@ -9,6 +9,7 @@ import 'rxjs/add/operator/toPromise';
 export class DeckService {
 
   current: CardData;
+  sending: boolean = false;
 
   constructor(
     private http: Http
@@ -31,9 +32,16 @@ export class DeckService {
 
   //GET /decks/{deckId}?page={pageNum}&size={pageSize} returns CardData
   getNextPage(deck: Deck): Promise<CardData> {
+
+    if(this.sending) {
+      return Promise.reject('Already sending request.');
+    } else {
+      this.sending = true;
+    }
     
     //Reached end of cards
     if(this.current && !this.current.next) {
+      this.sending = false;
       return Promise.reject('No more cards.');
     }
 
@@ -48,6 +56,7 @@ export class DeckService {
                     .then(response => {
                       let json = response.json() as CardData;
                       this.current = json;
+                      this.sending = false;
                       return json;
                     });
   }
