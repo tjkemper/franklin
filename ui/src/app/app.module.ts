@@ -54,6 +54,8 @@ import { SpecialDatePipe } from './special-date.pipe';
 import { DeckService } from './deck.service';
 import { DeckStoreService } from './deck-store.service';
 import { StatsService } from './stats.service';
+import { WeekStatsComponent } from './week-stats/week-stats.component';
+import { TotalStatsComponent } from './total-stats/total-stats.component';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { StatsService } from './stats.service';
     DotPipe,
     AboutComponent,
     SpecialDatePipe,
-    StatsComponent
+    StatsComponent,
+    WeekStatsComponent,
+    TotalStatsComponent
 
   ],
   imports: [

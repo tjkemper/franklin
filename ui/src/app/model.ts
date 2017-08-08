@@ -31,5 +31,10 @@ export class VirtueData {
 // Stats
 export class Total {
     virtue: string;
-    total: number
+    total: number;
+}
+
+export class Week {
+    startDate: string;
+    count: number;
 }

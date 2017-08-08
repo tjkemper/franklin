@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
+import { Subscription } from 'rxjs/Subscription';
 
 import { DeckService } from '../deck.service';
 import { DeckStoreService } from '../deck-store.service';
@@ -9,18 +11,19 @@ import { CardData, Card } from '../model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   cards: Card[] = [];
   more: boolean = true;
+  subscription: Subscription;
 
   constructor(
     private deckService: DeckService,
     private deckStoreService: DeckStoreService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.deckStoreService.decks().subscribe(deck => {
+    this.subscription = this.deckStoreService.decks.subscribe(deck => {
       console.log('Deck changed. Go get first page.', deck);
       this.deckService.getFirstPage(this.deckStoreService.deck)
                       .then(cardData => {
@@ -30,6 +33,10 @@ export class HomeComponent implements OnInit {
                         this.cards[0].current = true;
                       });
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   getNextPage() {

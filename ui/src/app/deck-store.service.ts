@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observer } from 'rxjs/Observer';
 import { Subscription } from 'rxjs/Subscription';
@@ -14,16 +14,14 @@ export class DeckStoreService {
 
   key: string = "deck";
   _deck: Deck;
-  deckData: Observable<Deck>;
+  decks: Observable<Deck>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private deckService: DeckService
-  ) { }
-
-  decks(): Observable<Deck> {
-    return this.deckData = new Observable<Deck>((deckObserver: Observer<Deck>) => {
+  ) {
+    this.decks = new Observable<Deck>((deckObserver: Observer<Deck>) => {
       
       this.activatedRoute.queryParams
         .debounceTime(200)
@@ -69,7 +67,8 @@ export class DeckStoreService {
     console.log(`put queryParam in URL: ?id=${this.deck.id}`);
     this.router.navigate([], {
       queryParams: { id: this.deck.id },
-      relativeTo: this.activatedRoute
+      relativeTo: this.activatedRoute,
+      replaceUrl: true
     });
   }
 

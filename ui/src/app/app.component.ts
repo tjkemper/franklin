@@ -6,11 +6,4 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'app';
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {}
-}
+export class AppComponent {}
