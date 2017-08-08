@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartsModule } from 'ng2-charts';
 
 import {
   MdAutocompleteModule,
@@ -43,13 +44,17 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
-import { DotPipe } from './dot.pipe';
 import { HomeComponent } from './home/home.component';
+import { StatsComponent } from './stats/stats.component';
 import { AboutComponent } from './about/about.component';
+
+import { DotPipe } from './dot.pipe';
+import { SpecialDatePipe } from './special-date.pipe';
 
 import { DeckService } from './deck.service';
 import { DeckStoreService } from './deck-store.service';
-import { SpecialDatePipe } from './special-date.pipe';
+import { StatsService } from './stats.service';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +63,8 @@ import { SpecialDatePipe } from './special-date.pipe';
     HomeComponent,
     DotPipe,
     AboutComponent,
-    SpecialDatePipe
+    SpecialDatePipe,
+    StatsComponent
 
   ],
   imports: [
@@ -66,6 +72,7 @@ import { SpecialDatePipe } from './special-date.pipe';
     BrowserAnimationsModule,
     HttpModule,
     CdkTableModule,
+    ChartsModule,
 
         // Material
     MdAutocompleteModule,
@@ -102,7 +109,8 @@ import { SpecialDatePipe } from './special-date.pipe';
   ],
   providers: [
     DeckService,
-    DeckStoreService
+    DeckStoreService,
+    StatsService
   ],
   bootstrap: [AppComponent]
 })

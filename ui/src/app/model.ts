@@ -27,3 +27,9 @@ export class VirtueData {
     friday: number;
     saturday: number;
 }
+
+// Stats
+export class Total {
+    virtue: string;
+    total: number
+}

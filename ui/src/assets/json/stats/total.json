@@ -1,0 +1,17 @@
+{
+    "data": [
+        { "virtue": "temperance",  "total": 1   },
+        { "virtue": "silence",     "total": 10  },
+        { "virtue": "order",       "total": 4   },
+        { "virtue": "resolution",  "total": 25  },
+        { "virtue": "frugality",   "total": 3   },
+        { "virtue": "industry",    "total": 4   },
+        { "virtue": "sincerity",   "total": 5   },
+        { "virtue": "justice",     "total": 65  },
+        { "virtue": "moderation",  "total": 345 },
+        { "virtue": "cleanliness", "total": 4   },
+        { "virtue": "chastity",    "total": 34  },
+        { "virtue": "tranquility", "total": 17  },
+        { "virtue": "humility",    "total": 42  }
+    ]
+}
