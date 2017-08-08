@@ -1,0 +1,15 @@
+{
+    "virtue": "humility",
+    "data": [
+        { "startDate": "7/30/2017", "count": 3 },
+        { "startDate": "7/23/2017", "count": 5 },
+        { "startDate": "7/16/2017", "count": 6 },
+        { "startDate": "7/9/2017", "count": 9 },
+        { "startDate": "7/2/2017", "count": 8 },
+        { "startDate": "6/25/2017", "count": 7 },
+        { "startDate": "6/18/2017", "count": 4 },
+        { "startDate": "6/11/2017", "count": 0 },
+        { "startDate": "6/4/2017", "count": 3 },
+        { "startDate": "5/28/2017", "count": 2 }
+    ]
+}
