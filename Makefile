@@ -8,5 +8,6 @@ ui-deploy: ui-build-prod
 
 .PHONY: ui-build-prod
 ui-build-prod:
-	cd ui && ng build --prod --base-href "https://tjkemper.github.io/franklin"
+	cd ui && ng build --prod --base-href "/franklin/"
+
 
