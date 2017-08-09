@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnChanges, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/takeWhile';
 
@@ -12,41 +12,50 @@ import { Week } from '../model';
   templateUrl: './week-stats.component.html',
   styleUrls: ['./week-stats.component.css']
 })
-export class WeekStatsComponent implements OnInit, OnDestroy {
+export class WeekStatsComponent implements OnChanges {
 
-  subscribing: boolean = true;
-  virtue: string;
+  @Input() virtue: string;
+  @Input() color: string;
 
   labels: string[] = [];
   datasets = [];
+  colors: Array<any> = [];
   chartType: string = 'line';
   ok: boolean = false; //ok to show chart
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private deckStoreService: DeckStoreService,
     private statsService: StatsService
-  ) { }
+  ) {}
 
-  ngOnInit() {
-    this.deckStoreService.decks.takeWhile( () => this.subscribing ).subscribe(deck => {
-      this.activatedRoute.params.takeWhile( () => this.subscribing ).subscribe(params => {
-        this.virtue = params.virtue;
-        let set = { data: [], label: this.virtue };
-        this.statsService.weeks(deck, this.virtue).then(weeks => {
-          weeks.map((value: Week) => {
-            this.labels.unshift(value.startDate);
-            set.data.unshift(value.count);
-          });
-          this.datasets.push(set);
-          this.ok = true;
-        });
+  ngOnChanges(changes: SimpleChanges) {
+    if(!this.deckStoreService.deck) {
+      this.router.navigateByUrl('');
+    }
+    
+    this.reset();
+    this.virtue = changes.virtue.currentValue;
+    
+    let set = { data: [], label: this.virtue };
+    if(this.color) {
+      this.colors.push({ backgroundColor: this.color });
+    }
+    this.statsService.weeks(this.deckStoreService.deck, this.virtue).then(weeks => {
+      weeks.map((value: Week) => {
+        this.labels.unshift(value.startDate);
+        set.data.unshift(value.count);
       });
+      this.datasets.push(set);
+      this.ok = true;
     });
   }
 
-  ngOnDestroy() {
-    this.subscribing = false;
+  reset() {
+    this.labels = [];
+    this.datasets = [];
+    this.colors = [];
+    this.ok = false;
   }
 
 }

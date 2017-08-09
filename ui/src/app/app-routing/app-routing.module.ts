@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'stats', component: StatsComponent,
     children: [
-      { path: '', component: TotalStatsComponent },
-      { path: ':virtue', component: WeekStatsComponent }
+      { path: '', component: TotalStatsComponent }
     ] 
   },
   { path: 'about', component: AboutComponent }

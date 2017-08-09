@@ -2,7 +2,6 @@
   <canvas baseChart *ngIf="ok"
               [datasets]="datasets"
               [labels]="labels"
-              [chartType]="chartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
+              [colors]="colors"
+              [chartType]="chartType"></canvas>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -20,9 +19,10 @@ export class TotalStatsComponent implements OnInit, OnDestroy {
   chartType: string = 'doughnut';
   ok: boolean = false; //ok to show chart
 
+  weeksVirtue: string;
+  weeksColor: string;
+
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
     private deckStoreService: DeckStoreService,
     private statsService: StatsService
   ) { }
@@ -43,17 +43,11 @@ export class TotalStatsComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  // events
   public chartClicked(event) {
-    console.log(event);
     if(event.active[0]) {
-      console.log(this.labels[event.active[0]._index]);
-      let clickedVirtue = this.labels[event.active[0]._index];
-      this.router.navigate([ clickedVirtue ], { relativeTo: this.activatedRoute });
+      this.weeksVirtue = this.labels[event.active[0]._index];
+      this.weeksColor = event.active[0]._model.backgroundColor;
     }
   }
- 
-  public chartHovered(e:any) {
-    console.log(e);
-  }
+
 }
