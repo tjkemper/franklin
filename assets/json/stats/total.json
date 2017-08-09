@@ -11,7 +11,7 @@
         { "virtue": "moderation",  "total": 345 },
         { "virtue": "cleanliness", "total": 4   },
         { "virtue": "chastity",    "total": 34  },
-        { "virtue": "tranquility", "total": 17  },
+        { "virtue": "tranquillity", "total": 17  },
         { "virtue": "humility",    "total": 42  }
     ]
 }
